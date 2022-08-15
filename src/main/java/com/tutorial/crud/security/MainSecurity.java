@@ -1,6 +1,7 @@
 package com.tutorial.crud.security;
 
 import com.tutorial.crud.security.jwt.JwtEntryPoint;
+import com.tutorial.crud.security.jwt.JwtProvider;
 import com.tutorial.crud.security.jwt.JwtTokenFilter;
 import com.tutorial.crud.security.service.UserDetailsServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -28,6 +29,9 @@ public class MainSecurity extends WebSecurityConfigurerAdapter {
     @Autowired
     JwtEntryPoint jwtEntryPoint;
 
+    @Autowired
+    JwtProvider jwtProvider;
+
     @Bean
     public JwtTokenFilter jwtTokenFilter(){
         return new JwtTokenFilter();
@@ -41,6 +45,7 @@ public class MainSecurity extends WebSecurityConfigurerAdapter {
     protected void configure(AuthenticationManagerBuilder auth) throws Exception {
         auth.userDetailsService(userDetailsService).passwordEncoder(passwordEncoder());
     }
+
 
     @Bean
     @Override
