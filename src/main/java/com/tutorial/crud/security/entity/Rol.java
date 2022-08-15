@@ -1,6 +1,6 @@
 package com.tutorial.crud.security.entity;
 
-import com.tutorial.crud.security.enums.RolNombre;
+import com.tutorial.crud.security.enums.RolName;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -15,12 +15,12 @@ public class Rol {
     private int id;
     @NotNull
     @Enumerated(EnumType.STRING)
-    private RolNombre rolName;
+    private RolName rolName;
 
     public Rol() {
     }
 
-    public Rol(RolNombre rolName) {
+    public Rol(RolName rolName) {
         this.rolName = rolName;
     }
 }

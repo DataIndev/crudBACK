@@ -6,7 +6,7 @@ import com.tutorial.crud.security.dto.LoginUsuario;
 import com.tutorial.crud.security.dto.NuevoUsuario;
 import com.tutorial.crud.security.entity.Rol;
 import com.tutorial.crud.security.entity.Usuario;
-import com.tutorial.crud.security.enums.RolNombre;
+import com.tutorial.crud.security.enums.RolName;
 import com.tutorial.crud.security.jwt.JwtProvider;
 import com.tutorial.crud.security.service.RolService;
 import com.tutorial.crud.security.service.UsuarioService;
@@ -59,10 +59,10 @@ public class AuthController {
             return new ResponseEntity<>(new Mensaje("Ese Emaill ya existe"), HttpStatus.BAD_REQUEST);
         Usuario usuario = new Usuario(nuevoUsuario.getUser(), nuevoUsuario.getUserName(), nuevoUsuario.getUserEmail(), passwordEncoder.encode(nuevoUsuario.getUserPassword()));
         Set<Rol> roles = new HashSet<>();
-        roles.add(rolService.findByRolName(RolNombre.ROLE_USER).get());
+        roles.add(rolService.findByRolName(RolName.ROLE_USER).get());
 
         if(nuevoUsuario.getRoles().contains("admin"))
-            roles.add(rolService.findByRolName(RolNombre.ROLE_ADMIN).get());
+            roles.add(rolService.findByRolName(RolName.ROLE_ADMIN).get());
         usuario.setRoles(roles);
         usuarioService.save(usuario);
         return new ResponseEntity<>(new Mensaje("usuario guardado"), HttpStatus.CREATED);
