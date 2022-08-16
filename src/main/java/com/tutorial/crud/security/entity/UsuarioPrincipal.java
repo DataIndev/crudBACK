@@ -24,10 +24,10 @@ private Collection<? extends GrantedAuthority> authorithies;
         this.authorithies = authorithies;
     }
 
-    public static UsuarioPrincipal build(Usuario user){
+    public static UsuarioPrincipal build(Usuario name){
         List<GrantedAuthority> authorithies =
-                user.getRoles().stream().map(rol -> new SimpleGrantedAuthority(rol.getRolName().name())).collect(Collectors.toList());
-        return new UsuarioPrincipal(user.getUser(), user.getUserName(), user.getUserEmail(),user.getUserPassword(),authorithies);
+                name.getRoles().stream().map(rol -> new SimpleGrantedAuthority(rol.getRolName().name())).collect(Collectors.toList());
+        return new UsuarioPrincipal(name.getUser(), name.getUserName(), name.getUserEmail(),name.getUserPassword(),authorithies);
 
 
     }

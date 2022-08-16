@@ -20,5 +20,9 @@ public class RolService {
         return rolRepository.findByRolName(rolName);
     }
 
+    public void save(Rol rol){
+        rolRepository.save(rol);
+    }
+
 
 }

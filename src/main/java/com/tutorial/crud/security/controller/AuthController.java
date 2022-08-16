@@ -50,13 +50,13 @@ public class AuthController {
     @PostMapping("/nuevo")
     public ResponseEntity<?> nuevo(@Valid @RequestBody NuevoUsuario nuevoUsuario, BindingResult bindingResult){
         if(bindingResult.hasErrors())
-            return new ResponseEntity<>(new Mensaje("campos mal puestos o emaial invalido"), HttpStatus.BAD_REQUEST);
+            return new ResponseEntity<>(new Mensaje("campos mal puestos o email invalido"), HttpStatus.BAD_REQUEST);
 
         if(usuarioService.existsByUserName(nuevoUsuario.getUserName()))
             return new ResponseEntity<>(new Mensaje("Ese nombre ya existe"), HttpStatus.BAD_REQUEST);
 
         if(usuarioService.existsByUserEmail(nuevoUsuario.getUserEmail()))
-            return new ResponseEntity<>(new Mensaje("Ese Emaill ya existe"), HttpStatus.BAD_REQUEST);
+            return new ResponseEntity<>(new Mensaje("Ese Email ya existe"), HttpStatus.BAD_REQUEST);
         Usuario usuario = new Usuario(nuevoUsuario.getUser(), nuevoUsuario.getUserName(), nuevoUsuario.getUserEmail(), passwordEncoder.encode(nuevoUsuario.getUserPassword()));
         Set<Rol> roles = new HashSet<>();
         roles.add(rolService.findByRolName(RolName.ROLE_USER).get());
