@@ -25,7 +25,7 @@ public class JwtProvider {
     @Value("${jwt.expiration}")
     private long expiration;
 
-    final Key key = secretKeyFor(SignatureAlgorithm.HS256);
+    final Key key = secretKeyFor(SignatureAlgorithm.HS512);
 
 
     public String generateToken(Authentication authentication){

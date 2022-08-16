@@ -9,15 +9,17 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 public class UsuarioPrincipal implements UserDetails {
-private String user;
+private String firstName;
+private String lastName;
 private String userName;
 private String userEmail;
 private String userPassword;
 
 private Collection<? extends GrantedAuthority> authorithies;
 
-    public UsuarioPrincipal(String user, String userName, String userEmail, String userPassword, Collection<? extends GrantedAuthority> authorithies) {
-        this.user = user;
+    public UsuarioPrincipal(String firstName, String lastName, String userName, String userEmail, String userPassword, Collection<? extends GrantedAuthority> authorithies) {
+        this.firstName = firstName;
+        this.lastName = lastName;
         this.userName = userName;
         this.userEmail = userEmail;
         this.userPassword = userPassword;
@@ -27,7 +29,7 @@ private Collection<? extends GrantedAuthority> authorithies;
     public static UsuarioPrincipal build(Usuario name){
         List<GrantedAuthority> authorithies =
                 name.getRoles().stream().map(rol -> new SimpleGrantedAuthority(rol.getRolName().name())).collect(Collectors.toList());
-        return new UsuarioPrincipal(name.getUser(), name.getUserName(), name.getUserEmail(),name.getUserPassword(),authorithies);
+        return new UsuarioPrincipal(name.getFirstName(), name.getLastName(), name.getUserName(), name.getUserEmail(),name.getUserPassword(),authorithies);
 
 
     }
@@ -67,9 +69,11 @@ private Collection<? extends GrantedAuthority> authorithies;
         return true;
     }
 
-    public String getUser() {
-        return user;
+    public String getFirstName() {
+        return firstName;
     }
+
+    public String getLastName() {return lastName; }
 
     public String getUserEmail() {
         return userEmail;

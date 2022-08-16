@@ -12,7 +12,9 @@ import java.util.Set;
 @Setter
 public class NuevoUsuario {
     @NotBlank
-    private String user;
+    private String firstName;
+    @NotBlank
+    private String lastName;
     @NotBlank
     private String userName;
     @Email

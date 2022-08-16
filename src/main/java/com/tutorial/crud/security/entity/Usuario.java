@@ -15,7 +15,10 @@ public class Usuario {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
     @NotNull
-    private String user;
+    private String firstName;
+
+    @NotNull
+    private String lastName;
     @NotNull
     @Column (unique = true)
     private String userName;
@@ -32,8 +35,9 @@ public class Usuario {
     public Usuario() {
     }
 
-    public Usuario(String user, String userName, String userEmail, String userPassword) {
-        this.user = user;
+    public Usuario(String firstName, String lastName, String userName, String userEmail, String userPassword) {
+        this.firstName = firstName;
+        this.lastName = lastName;
         this.userName = userName;
         this.userEmail = userEmail;
         this.userPassword = userPassword;
