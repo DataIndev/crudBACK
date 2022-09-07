@@ -36,7 +36,7 @@ private Collection<? extends GrantedAuthority> authorithies;
 
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
-        return null;
+        return authorithies;
     }
 
     @Override
