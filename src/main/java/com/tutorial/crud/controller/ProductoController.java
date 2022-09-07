@@ -14,7 +14,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
-@RequestMapping("https://back-aba.herokuapp.com/")
+@RequestMapping("/producto")
 @CrossOrigin(origins = "*")
 public class ProductoController {
 
